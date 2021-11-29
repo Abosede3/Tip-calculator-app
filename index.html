@@ -18,33 +18,49 @@
                 <div class="bill-input">
                     <label for="Bill">Bill</label>
                    <div class="input">
-                     <input type="number" class="bill-input" id="bill-amount">
+                     <input type="number" class="bill-input" id="bill-amount" placeholder="0">
                      <img src="images/icon-dollar.svg" class="icon" alt="dollar">
                    </div>
                 </div>
+            
                 <div class="select-input">
                     <label for="select">Select Tip %</label>
                     <div class="tip-btn">
-                        <div class="btnpercent btn" id="tip-percentage">5%</div>
+                        <button class="btnpercent btn" id="tip-percentage">5%</button>
+                        <button class="btnpercent btn" id="tip-percentage">10%</button>
+                        <button class="btnpercent btn active" id="tip-percentage">15%</button>
+                        <button class="btnpercent btn" id="tip-percentage">25%</button>
+                        <button class="btnpercent btn" id="tip-percentage">50%</button>
+                        <!-- <div class="btnpercent btn" id="tip-percentage">5%</div>
                         <div class="btnpercent btn" id="tip-percentage">10%</div>
                         <div class="btnpercent btn active" id="tip-percentage">15%</div>
                         <div class="btnpercent btn" id="tip-percentage">25%</div>
-                        <div class="btnpercent btn" id="tip-percentage">50%</div>
-                       <div class="custom-input">
-                        <input type="number" class="custom" id="custom-percentage">
-                        
-                   </div>
+                        <div class="btnpercent btn" id="tip-percentage">50%</div> -->
+                        <div class="custom-input">
+                          <input type="number" class="custom" id="custom-percentage" placeholder="CUSTOM">    
+                        </div>
                     </div>
                 </div>
-                <div class="no-Of-People">
+                <!-- <div class="no-Of-People">
                     <label for="people">Number Of People</label>
                     <p class="error"></p>
-                   <div class="num-people-input">
+                   <div class="input">
                     <input type="number" class="number-of-people" id="num-of-people">
                     <img src="images/icon-person.svg" alt="person" class="icon">
                    </div>
+                </div> -->
+
+                <div class="bill-input">
+                    <!-- <label for="people">Number Of People</label> -->
+                    <p id="people">Number of people</p>
+                    <p id="error" class="error">Can't be Zero</p>
+                   <div class="input">
+                     <input type="number" class="number-of-people" id="num-of-people" placeholder="0">
+                     <img src="images/icon-person.svg" class="icon" alt="person">
+                   </div>
                 </div>
-            </div>
+
+            </div> 
 
             <div class="col-two">
                <div class="tip-amount-div">
@@ -61,7 +77,7 @@
                 </div>
                 <div><h1 class="value" id="total-amount">$0.00</h1></div>
                </div>
-               <input type="reset" value="reset" class="reset">
+               <input type="reset" value="reset" class="reset reset-active" id="reset">
             </div>
         </div>
     </div>

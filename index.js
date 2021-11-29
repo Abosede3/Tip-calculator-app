@@ -4,8 +4,10 @@ const tipsbtn = document.querySelectorAll('#tip-percentage');
 const tipCustom = document.getElementById('custom-percentage');
 const noOfPeople = document.getElementById('num-of-people');
 const results = document.querySelectorAll('.value');
+const total = document.getElementById('num-of-people');
 const resetBtn = document.querySelector('.reset');
-
+const errorMessage = document.getElementById('error');
+const resetEmpty = document.getElementById('reset-active')
 
 
 
@@ -16,19 +18,20 @@ tipsbtn.forEach(btn => {
 });
 tipCustom.addEventListener('input', setCustomValue);
 noOfPeople.addEventListener('input', setNoOfPeople);
-resetBtn.addEventListener('click', reset);
+resetBtn.addEventListener('click', resetForm, true);
 
 
 
-// setting a value for inputs
-let billValue = 0.0;
+
+// setting a set values for the inputs
+let billValue = 0;
 let tipValue = 0.15
 let PeopleValue = 1;
 
 
 
 
-// Functions
+// Validation function for int on the value passed by users
 
 function validateFloat(s){
     var rgx = /^[0-9]*\.?[0-9]*$/;
@@ -39,6 +42,7 @@ function validateInt(s){
     return s.match(rgx);
 }
 
+// Function for Bill
 function setBillValue(){
     if(bill.value.includes(',')){
         bill.value = bill.value.replace(',', '.');
@@ -53,7 +57,24 @@ function setBillValue(){
 }
 
 
+function resetActive(){
+    if(bill.value !== '0'|| bill.value !== "" || noOfPeople.value !== '' || noOfPeople !== 1){
+       
+        resetEmpty.style.cursor = 'pointer';
+        resetEmpty.classList.add('reset-active');
+        reset.addEventListener('click', resetForm, true);
 
+   }
+   else{
+           resetEmpty.style.cursor = "not allowed";
+           resetEmpty.classList.remove('click', resetForm, true);
+   }
+
+}
+
+
+
+// Function for tips active button
 function handleClick(event){
     tipsbtn.forEach(btn => {
         // Removing active on button
@@ -72,7 +93,7 @@ function handleClick(event){
     // console.log(tipValue);
 
 }
-
+// function for custom
 function setCustomValue(){
     if(!validateInt(tipCustom.value)){
         tipCustom.value =  tipCustom.value.susbtring(0, tipCustom.value.length-1);
@@ -85,7 +106,7 @@ function setCustomValue(){
        sumUp();
       
 }
-
+//  Set number of people function
 function setNoOfPeople(){
     
     if(!validateFloat(noOfPeople.value)){
@@ -93,12 +114,18 @@ function setNoOfPeople(){
     }
     PeopleValue = parseFloat(noOfPeople.value);
 
-    if(PeopleValue === 0){
-        alert('cant be a zero ')
-    } 
+    if(PeopleValue < 1){
+        errorMessage.style.display = 'flex';
+        noOfPeople.style.border = '4px solid red'
+    } else{
+        errorMessage.style.display = 'none';
+        noOfPeople.style.border = 'none'
+    }
+
     sumUp();
 }
 
+// calculate function
 function sumUp(){
    if(PeopleValue >= 1){
        let totalAmount = billValue * tipValue / PeopleValue;
@@ -109,13 +136,19 @@ function sumUp(){
    }
 }
 
-function reset(){
+function resetForm(){
     
-        billValue = 0.0;
-        
-        setBillValue();
-        tipsbtn[2].click();
+        bill.value = "0";
+        bill.style.color = 'hsl(184, 14%, 56%)';
+        noOfPeople.value = "1";
+        noOfPeople.style.color = 'hsl(184, 14%, 56%)';
+        // results.innerHTML = '$' + (0.0).toFixed(2);
+        tipCustom.value = "";
+        results[0].innerHTML = '$' + (0.0).toFixed(2);
+       results[1].innerHTML = '$' + (0.0).toFixed(2);
+       
+        // resetActive();
+       
 
-        PeopleValue = '1';
-        setNoOfPeople();
+     
 }

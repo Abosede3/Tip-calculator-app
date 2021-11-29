@@ -15,14 +15,26 @@ Global Variable
     --Dark-grayish-cyan: hsl(184, 14%, 56%);
     --Light-grayish-cyan: hsl(185, 41%, 84%);
     --Light-grayish-cyan: hsl(189, 41%, 97%);
+    --bg-button: hsl(183, 78%, 23%);
     --White: hsl(0, 0%, 100%);
     --bg: #C5E4E7;
+   
 
     --Font-size-form-inputs: 24px;
     --Weights-700: 700;
     --Weights-500: 500;
     --Weights-400: 400;
     --font-size: 27px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::placeholder{
+    color: var(--Dark-grayish-cyan);
 }
 
 *{
@@ -60,6 +72,7 @@ header{
     height: 440px;
     border-radius: 15px;
     overflow: hidden;
+    /* box-shadow: 1px 1px 1px rgb(122, 122, 122), 1px 1px 1px rgb(122, 122, 122); */
 
 
 }
@@ -74,22 +87,36 @@ header{
     gap: 2rem;
     position: relative;
 }
+.bill{
+    position: absolute;
+}
 
 .tip-btn{
     display: grid;
-    grid-template-columns: 100px 100px 100px;
-    gap:  1rem 1rem;
+    grid-template-columns: 107px 107px 107px;
+    gap:  0.3rem 0.9rem;
     margin-top: 5%;
     margin-bottom: 5%;
     color: var(--White);
+    font-family: 'Space Mono', monospace;
+
 }
 
 .btnpercent{
     background-color: var(--Very-dark-cyan);
-    padding: 20px;
+    padding: 10px 45px;
     text-align: center;
+    border-radius: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    font-weight: var(--Weights-400);
+    color: #fff;
+    border: none;
+    align-self: center;
+    cursor: pointer;
 
 }
+
 .active{
     background-color: var(--Strong-cyan);
 }
@@ -97,13 +124,13 @@ header{
 .tip-btn .custom{
     background-color: var(--Light-grayish-cyan);
     /* background-color: #F2F8FC; */
-    padding: 0px !;
-    width: 100px;
-    height: 60px;
-    padding: none;
+    
+    /* width: 100px;
+    height: 60px; */
+    /* padding: none; */
     border-radius: 5px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
 
 
 }
@@ -116,12 +143,21 @@ input[type="number"]{
     font-size: 24px;
     background-color: var(--Light-grayish-cyan);
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     outline: none;
     margin-top: 7%;
     margin-bottom: 3%;
     font-family: "Space Mono", monospace;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    box-sizing: border-box;
 }
+
+ input[type="number"]:focus {
+    border: 3px solid var(--Strong-cyan);
+  }
+
 label{
     font-family: 'Space Mono', monospace;
     font-size: 700;
@@ -130,15 +166,33 @@ label{
 .input{
     position: relative;
 }
+.no-Of-People{
+    /* margin-bottom: 0; */
+    position: absolute;
+}
 .num-people-input{
     position: relative;
+    
 }
 .icon{
     position: absolute;
     left: 4px;
     top: 33px;
 }
+.error{
+    color: red;
+    margin-left: 220px;
+    top: 1;
+    font-weight: 700;
+    position: absolute;
 
+}
+
+#people{
+    position: absolute ;
+ 
+    
+}
 .col-two{
     background-color: var(--Very-dark-cyan);
     width: 350px;
@@ -193,17 +247,26 @@ label{
 }
 .reset{
     position: absolute;
-    padding: 10px 100px;
-    border-radius: 15px;
+    padding: 3px 110px;
+    border-radius: 5px;
     border:none;
-    bottom: 15px;
-    left: 27px;
-    color: #09706A;
+    bottom: 40px;
+    left: 30px;
+    color: rgb(82, 82, 82);
     /* margin-left: 3%; */
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     text-transform: uppercase;
-    background-color: var(--Strong-cyan);
+    background-color: var(--bg-button);
+    font-family: 'Space Mono', monospace;
+    font-weight: var(--Weights-700);
+    cursor: none;
+}
+.reset-active{
+   background-color: var(--Strong-cyan);
+   cursor: pointer;
+   color: #09706A;
+   font-size: 24px;
 }
 /* End of Header */
 
@@ -214,7 +277,7 @@ label{
 
 
 
-@media(max-width: 500px){
+@media(max-width: 450px){
     body{
         width: 100%;
         height: 100vh;
@@ -232,11 +295,11 @@ label{
     }
     .container{
       
-        width: 480px;
+        /* width: 480px; */
         margin: auto;
         border-radius: 15px;
         overflow: visible;
-        height: 1100px;
+        height: 1100px; 
        
         /* padding-left: 1rem ;
         padding-right: 1rem; */
@@ -257,17 +320,28 @@ label{
         text-align: end;
         color: var(--Very-dark-cyan);
         width: 100%;
-        height: 40px;
+        height: 50px;
         font-size: 24px;
         background-color: var(--Light-grayish-cyan);
         border: none;
-        border-radius: 15px;
+        border-radius: 5px;
         outline: none;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;   
+        box-sizing: border-box;
+   
     }
+
+    input[type="number"]:focus {
+        border: 3px solid var(--Strong-cyan);
+      }
     label{
         font-family: 'Space Mono', monospace;
         font-size: 700;
-        margin-bottom: 1rem;
+        margin-bottom: 0.2rem;
+    }
+    #people{
+        position: absolute;
     }
     .input{
         position: relative;
@@ -277,29 +351,36 @@ label{
     }
     .icon{
         position: absolute;
-        left: 4px;
-       top: 38px;
+        left: 7px;
+        top: 38px;
     }
     .select-input{
-       /* position: relative; */
-       width: 100%;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      overflow: hidden;
        
-    }
+    } 
+    
     .tip-btn{
         display: grid;
-        grid-template-columns: 120px 120px;
-        gap:  2rem 2rem;
-        margin-left: 7%;
-        margin-bottom: 0;
+        grid-template-columns: 150px 150px;
+        gap:  2rem 3rem;
+        margin-left: 3%;
+
 
     }
     .btnpercent{
         background-color: var(--Very-dark-cyan);
-        padding: 20px;
-        margin-left: 3%;
+        padding: 10px 55px;
         text-align: center;
+        border-radius: 5px;
+        font-family: 'Space Mono', monospace;
+        font-size: 20px;
+        font-weight: var(--Weights-400);
         color: #fff;
-
+        border: none;
+        align-self: center;
+    
     }
     .active{
         background-color: var(--Strong-cyan);
@@ -307,14 +388,21 @@ label{
 
     .tip-btn .custom{
         background-color: #F2F8FC;
-        padding: 15px;
+        padding: 20px;
         padding: none;
+    }
+    .error{
+        color: red;
+        margin-left: 200px;
+        top: 1;
+        font-weight: 700;
+
     }
     .col-two{
       padding: 1rem 2rem;
-      width: 330px;
-      margin-left: 4%;
-      border-radius: 5px;
+      width: 380px;
+      margin-left: 1%;
+      border-radius: 7px;
       display: flex;
       flex-direction: column;
      background-color: var(--Very-dark-cyan);
@@ -324,14 +412,14 @@ label{
         justify-content: space-between;
         align-content: center;
         align-items: center;
-        margin-top: 20%;
+        margin-top: 15%;
     }
     .tip-total-div{
         display: flex;
         justify-content: space-between;
         align-content: center;
         align-items: center;
-        margin-top: 40%;
+        margin-top: 15%;
     }
     .tip-amount-div label{
         color: rgb(226, 225, 225);
@@ -348,18 +436,89 @@ label{
         
     }
     .reset{
-        padding: 10px 100px;
+        padding: 5px 120px;
+        position: absolute;
+        bottom: 55px;
         color: #09706A;
-        border-radius: 15px;
+        border-radius: 5px;
         border:none;
-        margin-top: 10%;
         text-align: center;
         font-size: 24px;
         text-transform: uppercase;
         background-color: var(--Strong-cyan);
+        
     }
 }
 
 
+@media(max-width:451px){
+    .container{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .bill-input{
+        overflow: hidden ;
+        position: relative;
+    }
+    .row{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+    }
+    .col-one{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        overflow: hidden;
+    }
+    .col-two{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        overflow: hidden ;
+    }
+}
+
+@media(max-width: 300px){
+    .tip-btn{
+        display: grid;
+        grid-template-columns: 100px 100px;
+        gap:  2rem 3rem;
+        margin-left: 3%;
 
 
+    }
+    input[type="number"]{
+        width: 75%;
+    }
+    .error{
+        color: red;
+        margin-left: 0;
+        top: 1;
+        font-weight: 700;
+
+    }
+    .tip-btn .custom{
+        background-color: #F2F8FC;
+        padding: 5px 20px;
+        padding: none;
+        font-size: 12px;
+    }
+    .col-two{
+        width: 260px;
+        margin: 0 0.3rem;
+        padding: 0;
+    }
+    
+    .reset{
+        padding: 5px 70px;
+        /* margin-left: 1px; */
+        /* position: absolute; */
+        right: 2;
+    }
+}
