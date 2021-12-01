@@ -20,9 +20,13 @@ tipCustom.addEventListener('input', setCustomValue);
 noOfPeople.addEventListener('input', setNoOfPeople);
 resetBtn.addEventListener('click', resetForm, true);
 
-
-
-
+// resetBtn.setAttribute("disabled",checkBtnState() )
+// function checkBtnState (){if(bill.value==0){
+// return true
+// }else{
+//     return false
+// }
+// }
 // setting a set values for the inputs
 let billValue = 0;
 let tipValue = 0.15
@@ -51,26 +55,15 @@ function setBillValue(){
         bill.value =  bill.value.susbtring(0, bill.value.length-1);
     }
     billValue = parseFloat(bill.value);
-
+// if(bill.value){
+//     resetBtn.setAttribute("disabled",false)
+// }
     sumUp();
+    resetActive();
     // console.log(billValue);
 }
 
 
-function resetActive(){
-    if(bill.value !== '0'|| bill.value !== "" || noOfPeople.value !== '' || noOfPeople !== 1){
-       
-        resetEmpty.style.cursor = 'pointer';
-        resetEmpty.classList.add('reset-active');
-        reset.addEventListener('click', resetForm, true);
-
-   }
-   else{
-           resetEmpty.style.cursor = "not allowed";
-           resetEmpty.classList.remove('click', resetForm, true);
-   }
-
-}
 
 
 
@@ -123,31 +116,48 @@ function setNoOfPeople(){
     }
 
     sumUp();
+    resetActive();
 }
 
 // calculate function
 function sumUp(){
    if(PeopleValue >= 1){
        let totalAmount = billValue * tipValue / PeopleValue;
-       let total = billValue* (tipValue + 1)/ PeopleValue;
+       let total = billValue * (tipValue + 1) / PeopleValue;
        results[0].innerHTML = '$' + totalAmount.toFixed(2);
        results[1].innerHTML = '$' + total.toFixed(2);
 
    }
 }
 
+function resetActive(){
+    if((bill.value !== '0'|| !bill.value) && (!noOfPeople.value || noOfPeople !== 1)){
+        resetBtn.style.cursor = 'pointer';
+        resetBtn.classList.add('reset-active');
+        resetBtn.addEventListener('click', resetForm, true);
+
+   }
+   else{
+
+           resetBtn.style.cursor = "none";
+           resetBtn.classList.remove('reset-active');
+           resetBtn.removeEventListener('click', resetForm, true);
+   }
+  
+}
+
+
+
 function resetForm(){
     
         bill.value = "0";
-        bill.style.color = 'hsl(184, 14%, 56%)';
+        bill.style.color = 'hsl(183, 100%, 15%)';
         noOfPeople.value = "1";
-        noOfPeople.style.color = 'hsl(184, 14%, 56%)';
-        // results.innerHTML = '$' + (0.0).toFixed(2);
+        noOfPeople.style.color = 'hsl(183, 100%, 15%)';
         tipCustom.value = "";
         results[0].innerHTML = '$' + (0.0).toFixed(2);
-       results[1].innerHTML = '$' + (0.0).toFixed(2);
-       
-        // resetActive();
+        results[1].innerHTML = '$' + (0.0).toFixed(2);
+        resetActive();
        
 
      
