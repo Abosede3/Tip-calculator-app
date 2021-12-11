@@ -96,7 +96,7 @@ header img{
 input[type="number"]{
     width: 100%;
     padding: 10px;
-    border: none;
+    border: 2px transparent solid ;
     background-color: var(--Light-grayish-cyan);
     outline: none;
     text-align: end;
@@ -111,6 +111,7 @@ input[type="number"]{
     font-weight: 700;
 
 }
+
 input[type="number"]:focus{
     border: 2px solid var(--Strong-cyan);
 }
@@ -121,7 +122,8 @@ input[type="number"]:focus{
 .input .icon{
     position: absolute;
     left: 2%;
-    top: 18%;
+    top: 32%;
+    width: 14px;
 }
 
 .tip-btn{
@@ -185,6 +187,7 @@ input[type="number"]:focus{
 }
 .error{
     color: red;
+    display: none;
 }
 .tip-amount-div label{
     color: rgb(226, 225, 225);
